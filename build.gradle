@@ -1,4 +1,4 @@
-plugins{
+plugins {
     id 'java'
     id 'net.serenity-bdd.serenity-gradle-plugin' version '4.0.30'
 }
@@ -27,6 +27,7 @@ dependencies {
 
 test {
     systemProperties(System.getProperties())
+    systemProperty("platform", System.getProperty("platform") ?: "android")
 }
 
 tasks.withType(JavaCompile).configureEach {

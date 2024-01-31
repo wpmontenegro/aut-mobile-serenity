@@ -6,8 +6,8 @@ Feature: Shopping cart
   @ADD_TO_CART
   Scenario Outline: Choose product and add to cart
     Given I entry to product "<product>"
-    #When I add it to the cart
-    #Then the product should be shown in the cart
+    When I add it to the cart
+    Then the product should be shown in the cart
     Examples:
       | product             |
       | Sauce Labs Backpack |
