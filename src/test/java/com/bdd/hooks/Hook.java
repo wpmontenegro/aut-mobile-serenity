@@ -8,7 +8,8 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 
-import static net.serenitybdd.screenplay.actors.OnStage.*;
+import static net.serenitybdd.screenplay.actors.OnStage.setTheStage;
+import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 
 public class Hook {
 

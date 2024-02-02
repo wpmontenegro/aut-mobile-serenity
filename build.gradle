@@ -20,6 +20,7 @@ dependencies {
     implementation "net.serenity-bdd:serenity-junit:${serenityVersion}"
     implementation "net.serenity-bdd:serenity-screenplay:${serenityVersion}"
     implementation "net.serenity-bdd:serenity-screenplay-webdriver:${serenityVersion}"
+    testImplementation "net.serenity-bdd:serenity-browserstack:${serenityVersion}"
     testImplementation "net.serenity-bdd:serenity-cucumber:${serenityVersion}"
     implementation "net.serenity-bdd:serenity-ensure:${serenityVersion}"
     implementation "org.slf4j:slf4j-simple:${slf4jVersion}"

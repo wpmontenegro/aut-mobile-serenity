@@ -1,7 +1,5 @@
 package com.mobile.scenario;
 
-import net.serenitybdd.screenplay.Performable;
-import net.serenitybdd.screenplay.Task;
 import org.openqa.selenium.OutputType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
