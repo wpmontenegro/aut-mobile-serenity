@@ -2,6 +2,7 @@ package com.mobile.utils;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
 import net.thucydides.core.webdriver.WebDriverFacade;
 
 import static com.mobile.utils.Constants.PLATFORM;
@@ -15,6 +16,17 @@ public class AppsUtils {
 
     public static AndroidDriver getAndroidDriver() {
         return (AndroidDriver) ((WebDriverFacade) getDriver()).getProxiedDriver();
+    }
+
+    public static IOSDriver getIOSDriver() {
+        return (IOSDriver) ((WebDriverFacade) getDriver()).getProxiedDriver();
+    }
+
+    public static void navigateBack() {
+        if (isAndroid())
+            getAndroidDriver().navigate().back();
+        if (isIOS())
+            getIOSDriver().navigate().back();
     }
 
     public static boolean isAndroid() {

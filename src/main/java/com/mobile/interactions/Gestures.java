@@ -8,6 +8,7 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.targets.Target;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 
@@ -48,6 +49,16 @@ public class Gestures {
                 case LEFT -> performGesture(left, midPoint.y, right, midPoint.y, speed);
                 case RIGHT -> performGesture(right, midPoint.y, left, midPoint.y, speed);
             }
+        });
+    }
+
+    public static Performable clickAndHoldToElement(Target sourceElement, Target targetElement) {
+        return Task.where(actor -> {
+            WebElementFacade fromElement = sourceElement.resolveFor(actor);
+            WebElementFacade toElement = targetElement.resolveFor(actor);
+            Actions actionProvider = new Actions(getMobileDriver());
+            actionProvider.clickAndHold(fromElement).moveToElement(toElement).build().perform();
+            actionProvider.release().build().perform();
         });
     }
 }
