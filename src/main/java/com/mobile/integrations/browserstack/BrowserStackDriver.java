@@ -1,7 +1,6 @@
-package com.mobile.integrations;
+package com.mobile.integrations.browserstack;
 
 import com.mobile.exceptions.AutomationException;
-import com.mobile.utils.BrowserStackDevices;
 import io.appium.java_client.AppiumDriver;
 import net.thucydides.core.webdriver.DriverSource;
 import org.apache.commons.lang3.ObjectUtils;
@@ -11,7 +10,6 @@ import org.slf4j.LoggerFactory;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Optional;
 import java.util.Properties;
 
 import static com.mobile.utils.Constants.CAPABILITIES_PREFIX;
@@ -21,7 +19,6 @@ import static org.apache.commons.lang3.StringUtils.EMPTY;
 public class BrowserStackDriver implements DriverSource {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BrowserStackDriver.class);
-    private static final String BROWSERSTACK_HUB = "hub.browserstack.com/wd/hub";
 
     @Override
     public AppiumDriver newDriver() {
@@ -42,7 +39,7 @@ public class BrowserStackDriver implements DriverSource {
         }
 
         try {
-            appiumDriver = new AppiumDriver(new URL(getUrl()), desiredCapabilities);
+            appiumDriver = new AppiumDriver(new URL(BrowserStackCredentials.getUrl()), desiredCapabilities);
         } catch (MalformedURLException | RuntimeException e) {
             throw new AutomationException("An error occurred while raising the driver with the Appium server URL", e);
         }
@@ -54,26 +51,5 @@ public class BrowserStackDriver implements DriverSource {
     @Override
     public boolean takesScreenshots() {
         return true;
-    }
-
-    public static String getUrl() {
-        String user = getUser();
-        String keyAccess = getAccessKey();
-        if (user.isEmpty() || keyAccess.isEmpty()) {
-            throw new AutomationException("You have tried to connect to browserstack but you must define the credentials correctly.");
-        }
-        return String.format("https://%s:%s@%s", user, keyAccess, BROWSERSTACK_HUB);
-    }
-
-    public static String getUser() {
-        String userConf = getOptionalProperty(CAPABILITIES_PREFIX + ".browserstack.user");
-        return Optional.ofNullable(getProperty("BROWSERSTACK_USER")).orElse(userConf);
-
-    }
-
-    public static String getAccessKey() {
-        String keyConf = getOptionalProperty(CAPABILITIES_PREFIX + ".browserstack.key");
-        return Optional.ofNullable(getProperty("BROWSERSTACK_KEY")).orElse(keyConf);
-
     }
 }

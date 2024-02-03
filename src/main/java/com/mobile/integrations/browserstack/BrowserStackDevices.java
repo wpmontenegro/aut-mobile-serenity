@@ -1,6 +1,7 @@
-package com.mobile.utils;
+package com.mobile.integrations.browserstack;
 
 import com.mobile.exceptions.AutomationException;
+import com.mobile.utils.GenerateData;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,6 +15,7 @@ public enum BrowserStackDevices {
     SAMSUNG_GALAXY_S22_ULTRA("Samsung Galaxy S22 Ultra", "12.0", ANDROID),
     IPHONE_15_PRO_MAX("iPhone 15 Pro Max", "17", IOS),
     IPHONE_14_PRO_MAX("iPhone 14 Pro Max", "16", IOS);
+
     private final String deviceName;
     private final String osVersion;
     private final String platform;
