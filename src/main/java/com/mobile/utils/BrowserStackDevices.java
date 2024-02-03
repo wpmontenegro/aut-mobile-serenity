@@ -10,8 +10,8 @@ import static io.appium.java_client.remote.MobilePlatform.ANDROID;
 import static io.appium.java_client.remote.MobilePlatform.IOS;
 
 public enum BrowserStackDevices {
-    SAMSUNG_GALAXY_S23_ULTRA("Samsung Galaxy S23 Ultra ", "13.0", ANDROID),
-    SAMSUNG_GALAXY_S22_ULTRA("Samsung Galaxy S22 Ultra ", "12.0", ANDROID),
+    SAMSUNG_GALAXY_S23_ULTRA("Samsung Galaxy S23 Ultra", "13.0", ANDROID),
+    SAMSUNG_GALAXY_S22_ULTRA("Samsung Galaxy S22 Ultra", "12.0", ANDROID),
     IPHONE_15_PRO_MAX("iPhone 15 Pro Max", "17", IOS),
     IPHONE_14_PRO_MAX("iPhone 14 Pro Max", "16", IOS);
     private final String deviceName;

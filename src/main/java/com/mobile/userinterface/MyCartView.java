@@ -20,6 +20,6 @@ public class MyCartView {
             .waitingForNoMoreThan(Duration.ofSeconds(TIME_OUT_15));
 
     public static final Target BTN_GO_SHOPPING = Target.the("Button Go Shopping")
-            .locatedForAndroid(By.xpath("//android.view.ViewGroup[@content-desc=\"Go Shopping\"]"))
+            .locatedForAndroid(By.xpath("//android.view.ViewGroup[@content-desc=\"Go Shopping button\"]"))
             .locatedForIOS(AppiumBy.iOSNsPredicateString("label == \"Go Shopping\""));
 }
