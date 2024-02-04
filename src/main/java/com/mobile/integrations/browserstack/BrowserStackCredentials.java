@@ -23,12 +23,10 @@ public class BrowserStackCredentials {
     private static String getUser() {
         String userConf = getOptionalProperty(CAPABILITIES_PREFIX + ".browserstack.user");
         return Optional.ofNullable(getProperty("BROWSERSTACK_USER")).orElse(userConf);
-
     }
 
     private static String getAccessKey() {
         String keyConf = getOptionalProperty(CAPABILITIES_PREFIX + ".browserstack.key");
         return Optional.ofNullable(getProperty("BROWSERSTACK_KEY")).orElse(keyConf);
-
     }
 }
