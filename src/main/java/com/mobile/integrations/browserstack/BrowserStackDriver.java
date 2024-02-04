@@ -12,6 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Properties;
 
+import static com.mobile.scenario.ManageScenario.getScenario;
 import static com.mobile.utils.Constants.CAPABILITIES_PREFIX;
 import static com.mobile.utils.PropertiesUtil.*;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
@@ -37,6 +38,8 @@ public class BrowserStackDriver implements DriverSource {
             desiredCapabilities.setCapability("deviceName", device.getDeviceName());
             desiredCapabilities.setCapability("osVersion", device.getOsVersion());
         }
+
+        desiredCapabilities.setCapability("sessionName", getScenario().getName());
 
         try {
             appiumDriver = new AppiumDriver(new URL(BrowserStackCredentials.getUrl()), desiredCapabilities);

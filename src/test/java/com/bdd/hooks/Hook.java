@@ -14,14 +14,14 @@ import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 public class Hook {
 
     @Before(order = 1)
-    public void init() {
-        setTheStage(new OnlineCast());
-        theActorCalled("User");
+    public void handleScenario(Scenario scenario) {
+        ManageScenario.setScenario(scenario);
     }
 
     @Before(order = 2)
-    public void handleScenario(Scenario scenario) {
-        ManageScenario.setScenario(scenario);
+    public void init() {
+        setTheStage(new OnlineCast());
+        theActorCalled("User");
     }
 
     @After(order = 1)
