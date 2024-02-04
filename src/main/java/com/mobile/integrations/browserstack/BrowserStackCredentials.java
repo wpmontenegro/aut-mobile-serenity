@@ -20,13 +20,13 @@ public class BrowserStackCredentials {
         return String.format("https://%s:%s@%s", user, keyAccess, BROWSERSTACK_HUB);
     }
 
-    public static String getUser() {
+    private static String getUser() {
         String userConf = getOptionalProperty(CAPABILITIES_PREFIX + ".browserstack.user");
         return Optional.ofNullable(getProperty("BROWSERSTACK_USER")).orElse(userConf);
 
     }
 
-    public static String getAccessKey() {
+    private static String getAccessKey() {
         String keyConf = getOptionalProperty(CAPABILITIES_PREFIX + ".browserstack.key");
         return Optional.ofNullable(getProperty("BROWSERSTACK_KEY")).orElse(keyConf);
 

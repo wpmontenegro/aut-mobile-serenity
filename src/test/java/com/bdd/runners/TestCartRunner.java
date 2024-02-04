@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"json:target/cucumber/cucumber.json"},
         snippets = CucumberOptions.SnippetType.CAMELCASE,
-        features = "src/example/resources/features",
+        features = "src/test/resources/features",
         glue = {"com.bdd.stepsdefinitions", "com.bdd.hooks"},
         stepNotifications = true
 )
