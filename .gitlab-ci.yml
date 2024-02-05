@@ -14,9 +14,7 @@ variables:
 before_script:
   - GRADLE_USER_HOME="$(pwd)/.gradle"
   - export GRADLE_USER_HOME
-  - chmod +x ./gradlew-
-  - echo $BROWSERSTACK_USER > .env
-  - echo $BROWSERSTACK_KEY > .env
+  - chmod +x ./gradlew
   - source .env
 
 test:
