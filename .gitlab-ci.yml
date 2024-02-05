@@ -1,7 +1,6 @@
 image: gradle:alpine
 
 stages:
-  - build
   - test
 
 variables:
@@ -17,17 +16,11 @@ before_script:
   - export GRADLE_USER_HOME
   - chmod +x ./gradlew
 
-build:
-  stage: build
-  script: 
-    - echo $BROWSERSTACK_USER
-    - ./gradlew build
-
 test:
   stage: test
   script: 
     - echo "Running MOBILE test cases with Serenity-BDD on BrowserStack"
-    - ./gradlew clean test -Dplatform=$PLATFORM -Dtype=bstack
+    - ./gradlew clean test -Dplatform=$PLATFORM -Dtype=bstack -DBROWSERSTACK_USER=$BROWSERSTACK_USER -DBROWSERSTACK_KEY=$DBROWSERSTACK_KEY
     
   artifacts:
     when: always
