@@ -14,13 +14,16 @@ variables:
 before_script:
   - GRADLE_USER_HOME="$(pwd)/.gradle"
   - export GRADLE_USER_HOME
-  - chmod +x ./gradlew
+  - chmod +x ./gradlew-
+  - echo $BROWSERSTACK_USER > .env
+  - echo $BROWSERSTACK_KEY > .env
+  - source .env
 
 test:
   stage: test
   script: 
     - echo "Running MOBILE test cases with Serenity-BDD on BrowserStack"
-    - ./gradlew clean test --tests "*.TestCartRunner" -Dplatform=$PLATFORM -Dtype=bstack -DBROWSERSTACK_USER=$BROWSERSTACK_USER -DBROWSERSTACK_KEY=$BROWSERSTACK_KEY
+    - ./gradlew clean test --tests "*.TestCartRunner" -Dplatform=$PLATFORM -Dtype=bstack
     
   artifacts:
     when: always
