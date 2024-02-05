@@ -1,0 +1,36 @@
+image: gradle:alpine
+
+stages:
+  - build
+  - test
+
+variables:
+  PLATFORM:
+    value: "android"
+    options:
+      - "android"
+      - "ios"
+    description: "Platform for test execution"
+
+before_script:
+  - GRADLE_USER_HOME="$(pwd)/.gradle"
+  - export GRADLE_USER_HOME
+  - chmod +x ./gradlew
+
+build:
+  stage: build
+  script: 
+    - ./gradlew build
+
+test:
+  stage: test
+  script: 
+    - echo "Running MOBILE test cases with Serenity-BDD on BrowserStack"
+    - ./gradlew clean test -Dplatform=$PLATFORM -Dtype=bstack
+    
+  artifacts:
+    when: always
+    name: "Serenity MOBILE Report"
+    paths:
+    - target/site/serenity
+    expire_in: 24h
