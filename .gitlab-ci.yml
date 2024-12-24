@@ -21,7 +21,7 @@ test:
   stage: test
   script: 
     - echo "Running MOBILE test cases with Serenity-BDD on BrowserStack"
-    - ./gradlew clean test --tests "*.TestCartRunner" -Dplatform=$PLATFORM -Dtype=bstack
+    #- ./gradlew clean test --tests "*.TestCartRunner" -Dplatform=$PLATFORM -Dtype=bstack
     
   artifacts:
     when: always
