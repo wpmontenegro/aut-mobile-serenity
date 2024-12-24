@@ -29,7 +29,7 @@ public class CartStepDefinition {
     @Then("the product should be shown in the cart")
     public void theProductShouldBeShownInTheCart() {
         theActorInTheSpotlight().should(seeThat(VerifyProduct.withName(),
-                is(equalTo(TestData.getInstance().getTestData().get("productName")))));
+                is(equalTo(TestData.getInstance().getData("productName")))));
         theActorInTheSpotlight().attemptsTo(RemoveProduct.fromCart());
     }
 }

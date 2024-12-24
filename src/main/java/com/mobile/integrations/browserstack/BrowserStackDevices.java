@@ -41,7 +41,7 @@ public enum BrowserStackDevices {
     public static BrowserStackDevices getRandomDevice(){
         String platform = PLATFORM.toLowerCase();
         List<BrowserStackDevices> devices = Arrays.stream(BrowserStackDevices.values())
-                .filter(BrowserStackDevices -> BrowserStackDevices.getPlatform().equalsIgnoreCase(platform))
+                .filter(device -> device.getPlatform().equalsIgnoreCase(platform))
                 .toList();
         if (devices.isEmpty()){
             throw new AutomationException("No devices available on the specified platform");

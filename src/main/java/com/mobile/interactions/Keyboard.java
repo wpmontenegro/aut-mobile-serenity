@@ -18,7 +18,7 @@ public class Keyboard implements Interaction {
         this.value = value;
     }
 
-    private Keyboard enterValue(String value) {
+    public Keyboard enterValue(String value) {
         return Tasks.instrumented(Keyboard.class, value);
     }
 
