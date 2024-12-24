@@ -30,7 +30,7 @@ public class ChooseProduct implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        TestData.getInstance().getTestData().put("productName", productName);
+        TestData.getInstance().putData("productName", productName);
         actor.attemptsTo(WaitUntil.the(LBL_PRODUCTS, isVisible())
                 .forNoMoreThan(TIME_OUT_10).seconds());
         actor.attemptsTo(Gestures.scrollByDirectionIn(VIEW_SCROLL, Direction.DOWN, DISTANCE_SCROLL_FOURTH_PART));

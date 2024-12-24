@@ -1,7 +1,7 @@
 package com.mobile.utils;
 
 public class Constants {
-    public static String PLATFORM = System.getProperty("platform");
+    public static final String PLATFORM = System.getProperty("platform");
     public static final long TIME_OUT_10 = 10;
     public static final long TIME_OUT_15 = 15;
     public static final long TIME_OUT_30 = 30;

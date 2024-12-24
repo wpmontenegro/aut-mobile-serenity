@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class TestData {
     private static TestData instance = null;
-    private static Map<String, String> testData = null;
+    private static Map<String, String> dataMap = null;
 
     private TestData() {
     }
@@ -13,12 +13,16 @@ public class TestData {
     public static TestData getInstance() {
         if (instance == null) {
             instance = new TestData();
-            testData = new HashMap<>();
+            dataMap = new HashMap<>();
         }
         return instance;
     }
 
-    public Map<String, String> getTestData() {
-        return testData;
+    public String getData(String key) {
+        return dataMap.get(key);
+    }
+
+    public void putData(String key, String value) {
+        dataMap.put(key, value);
     }
 }
