@@ -19,9 +19,11 @@ before_script:
 
 test:
   stage: test
+  rules:
+    - when: never
   script: 
     - echo "Running MOBILE test cases with Serenity-BDD on BrowserStack"
-    #- ./gradlew clean test --tests "*.TestCartRunner" -Dplatform=$PLATFORM -Dtype=bstack
+    - ./gradlew clean test --tests "*.TestCartRunner" -Dplatform=$PLATFORM -Dtype=bstack
     
   artifacts:
     when: always
