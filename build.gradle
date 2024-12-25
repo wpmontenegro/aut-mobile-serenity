@@ -19,8 +19,9 @@ dependencies {
     implementation "net.serenity-bdd:serenity-core:${serenityVersion}"
     implementation "net.serenity-bdd:serenity-junit:${serenityVersion}"
     implementation "net.serenity-bdd:serenity-screenplay-webdriver:${serenityVersion}"
-    testImplementation "net.serenity-bdd:serenity-cucumber:${serenityVersion}"
     implementation "net.serenity-bdd:serenity-ensure:${serenityVersion}"
+    testImplementation "net.serenity-bdd:serenity-cucumber:${serenityVersion}"
+    testImplementation "net.serenity-bdd:serenity-saucelabs:${serenityVersion}"
     implementation "org.slf4j:slf4j-simple:${slf4jVersion}"
 }
 

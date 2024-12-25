@@ -2,7 +2,7 @@
 
 ## Architecture
 
-This project is built with **Serenity-BDD** and **Appium**, integrated with **BrowserStack** for mobile testing.
+This project is built with **Serenity-BDD** and **Appium**, integrated with **BrowserStack/SauceLabs** for mobile testing.
 
 ![Architecture](docs/arq-aut-mobile-serenity.jpg)
 
@@ -24,8 +24,8 @@ This project is built with **Serenity-BDD** and **Appium**, integrated with **Br
 ### Cloud Execution
 
 - To run mobile tests in the cloud:  
-  - Upload the app to **BrowserStack** and verify the `bstack` profile configuration.
-  - Set **BrowserStack Credentials** as environment variables: `BROWSERSTACK_USER` and `BROWSERSTACK_KEY`
+  - Upload the app to **BrowserStack/SauceLabs** and verify the `bstack` or `sauce` profile configuration.
+  - Set **BrowserStack Credentials** as environment variables: {`BROWSERSTACK_USER` and `BROWSERSTACK_KEY`} or {`SAUCE_USER` and `SAUCE_KEY`}
 
 ---
 
@@ -57,4 +57,5 @@ Defines the driver type. Supported values:
 ```
 local (to execute tests on a locally connected device or emulator)
 bstack (to execute tests using BrowserStack)
+sauce (to execute tests using SauceLabs)
 ```
