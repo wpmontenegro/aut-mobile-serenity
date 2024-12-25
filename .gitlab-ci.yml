@@ -29,7 +29,7 @@ test:
     - if: '$CI_MERGE_REQUEST_ID'
     - when: never
   script: 
-    - echo "Running MOBILE test cases with Serenity-BDD on BrowserStack"
+    - echo "Running MOBILE test cases with Serenity-BDD on BrowserStack or SauceLabs"
     - ./gradlew clean test --tests "*.TestCartRunner" -Dplatform=$PLATFORM -Dtype=$TYPE
     
   artifacts:
