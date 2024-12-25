@@ -10,6 +10,12 @@ variables:
       - "android"
       - "ios"
     description: "Platform for test execution"
+  TYPE:
+    value: "sauce"
+    options:
+      - "sauce"
+      - "bstack"
+    description: "Driver type for test execution"
 
 before_script:
   - GRADLE_USER_HOME="$(pwd)/.gradle"
@@ -23,7 +29,7 @@ test:
     - when: never
   script: 
     - echo "Running MOBILE test cases with Serenity-BDD on BrowserStack"
-    - ./gradlew clean test --tests "*.TestCartRunner" -Dplatform=$PLATFORM -Dtype=bstack
+    - ./gradlew clean test --tests "*.TestCartRunner" -Dplatform=$PLATFORM -Dtype=$TYPE
     
   artifacts:
     when: always
