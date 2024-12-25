@@ -25,7 +25,7 @@ This project is built with **Serenity-BDD** and **Appium**, integrated with **Br
 
 - To run mobile tests in the cloud:  
   - Upload the app to **BrowserStack/SauceLabs** and verify the `bstack` or `sauce` profile configuration.
-  - Set **BrowserStack Credentials** as environment variables: {`BROWSERSTACK_USER` and `BROWSERSTACK_KEY`} or {`SAUCE_USER` and `SAUCE_KEY`}
+  - Set **BrowserStack/SauceLabs Credentials** as environment variables: {`BROWSERSTACK_USER` and `BROWSERSTACK_KEY`} or {`SAUCE_USER` and `SAUCE_KEY`}
 
 ---
 
@@ -36,7 +36,7 @@ This project is built with **Serenity-BDD** and **Appium**, integrated with **Br
 Run the following command in the terminal:
 
 ```
-gradlew clean test --tests "*.TestCartRunner" -Dplatform={PLATFORM} -Dtype={DRIVER}
+gradlew clean test --tests "*.TestCartRunner" -Dplatform={PLATFORM} -Dtype={TYPE}
 ```
 
 ### Accepted Parameters
