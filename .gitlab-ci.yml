@@ -26,7 +26,8 @@ before_script:
 test:
   stage: test
   rules:
-    - when: always
+    - if: '$CI_MERGE_REQUEST_ID'
+    - when: never
   script: 
     - echo "Running MOBILE test cases with Serenity-BDD on BrowserStack"
     - ./gradlew clean test --tests "*.TestCartRunner" -Dplatform=$PLATFORM -Dtype=$TYPE
