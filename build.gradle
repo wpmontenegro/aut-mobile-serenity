@@ -29,6 +29,7 @@ test {
     systemProperties(System.getProperties())
     systemProperty("platform", System.getProperty("platform") ?: "android")
     systemProperty("type", System.getProperty("type") ?: "local")
+    finalizedBy(aggregate)
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -36,4 +37,3 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 gradle.startParameter.continueOnFailure = true
-test.finalizedBy(aggregate)
