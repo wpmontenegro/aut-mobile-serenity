@@ -8,8 +8,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 
-import static net.serenitybdd.screenplay.actors.OnStage.setTheStage;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
+import static net.serenitybdd.screenplay.actors.OnStage.*;
 
 public class Hook {
 
@@ -24,9 +23,10 @@ public class Hook {
         theActorCalled("User");
     }
 
-    @After(order = 1)
+    @After()
     public void tearDown() {
         AttachReport.shotWhenFail();
+        drawTheCurtain();
     }
 
     @AfterStep
