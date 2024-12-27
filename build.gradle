@@ -25,11 +25,12 @@ dependencies {
     implementation "org.slf4j:slf4j-simple:${slf4jVersion}"
 }
 
-test {
+tasks.test {
     systemProperties(System.getProperties())
     systemProperty("platform", System.getProperty("platform") ?: "android")
     systemProperty("type", System.getProperty("type") ?: "local")
-    finalizedBy(aggregate)
+    finalizedBy('aggregate')
+    maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
 }
 
 tasks.withType(JavaCompile).configureEach {
