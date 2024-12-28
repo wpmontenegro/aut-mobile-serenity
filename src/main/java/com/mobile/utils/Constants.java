@@ -8,7 +8,7 @@ public class Constants {
     public static final double DISTANCE_SCROLL_QUARTER = 0.25;
     public static final double DISTANCE_SCROLL_HALF = 0.5;
     public static final double DISTANCE_SCROLL_MAX = 1;
-    public static final String CAPABILITIES_PREFIX = String.format("%s.%s.%s", "environments", PropertiesUtil.getProperty("environment"), "appium");
-    public static final String APP_NAME = "mydemoapprn";
+    public static final String CAPABILITIES_PREFIX = String.format("%s.%s.%s.", "environments", PropertiesUtil.getProperty("environment"), "appium");
     public static final String PACKAGE_NAME = "com.saucelabs.mydemoapp.rn";
+    public static final String CHAR_ENTER_KEY = "\uE007";
 }

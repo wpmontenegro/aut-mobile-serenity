@@ -14,8 +14,10 @@ import org.openqa.selenium.interactions.Sequence;
 
 import java.time.Duration;
 import java.util.Collections;
+import java.util.HashMap;
 
-import static com.mobile.utils.AppsUtils.getMobileDriver;
+import static com.mobile.utils.AppsUtils.*;
+import static com.mobile.utils.Constants.PACKAGE_NAME;
 
 public class Gestures {
 
@@ -59,6 +61,15 @@ public class Gestures {
             Actions actionProvider = new Actions(getMobileDriver());
             actionProvider.clickAndHold(fromElement).moveToElement(toElement).build().perform();
             actionProvider.release().build().perform();
+        });
+    }
+
+    public static Performable useDeeplink(String url) {
+        return Task.where(actor -> {
+            HashMap<String, String> map = new HashMap<>();
+            map.put("url", url);
+            map.put("package", PACKAGE_NAME);
+            getAndroidDriver().executeScript("mobile: deepLink", map);
         });
     }
 }

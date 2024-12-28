@@ -10,12 +10,14 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import static com.mobile.utils.DeeplinkPaths.PRODUCT_FORMAT;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 public class CartStepDefinition {
+
 
     @Given("I entry to product {string}")
     public void iEntryToProduct(String productName) {
@@ -36,6 +38,8 @@ public class CartStepDefinition {
 
     @When("add a product to cart by deeplink")
     public void addAProductToCartByDeeplink() {
-        theActorInTheSpotlight().attemptsTo(OpenDeeplink.toAddItems());
+        String path = String.format(PRODUCT_FORMAT, TestData.getInstance().getData("id"),
+                TestData.getInstance().getData("amount"), TestData.getInstance().getData("color"));
+        theActorInTheSpotlight().attemptsTo(OpenDeeplink.withPath(path));
     }
 }

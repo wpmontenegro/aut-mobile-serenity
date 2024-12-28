@@ -1,16 +1,13 @@
 package com.mobile.utils;
 
-import com.mobile.exceptions.AutomationException;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
-import net.serenitybdd.screenplay.Performable;
-import net.serenitybdd.screenplay.Task;
 import net.thucydides.core.webdriver.WebDriverFacade;
 
-import java.util.HashMap;
-
 import static com.mobile.utils.Constants.*;
+import static io.appium.java_client.remote.MobilePlatform.ANDROID;
+import static io.appium.java_client.remote.MobilePlatform.IOS;
 import static net.serenitybdd.core.Serenity.getDriver;
 
 public class AppsUtils {
@@ -33,11 +30,11 @@ public class AppsUtils {
     }
 
     public static boolean isAndroid() {
-        return PLATFORM.equalsIgnoreCase("Android");
+        return PLATFORM.equalsIgnoreCase(ANDROID);
     }
 
     public static boolean isIOS() {
-        return PLATFORM.equalsIgnoreCase("iOS");
+        return PLATFORM.equalsIgnoreCase(IOS);
     }
 
     public static void changeApp(String packageName) {
@@ -45,17 +42,8 @@ public class AppsUtils {
         if (isIOS()) getIOSDriver().activateApp(packageName);
     }
 
-    public static Performable openDeepLink(String path) {
-        return Task.where(actor -> {
-            if (isAndroid()) {
-                HashMap<String, String> map = new HashMap<>();
-                map.put("url", APP_NAME + "://" + path);
-                map.put("package", PACKAGE_NAME);
-                getAndroidDriver().executeScript("mobile: deepLink", map);
-            }
-            if (isIOS()) {
-                throw new AutomationException("Method not implemented");
-            }
-        });
+    public static boolean isKeyboardShown() {
+        if (isAndroid()) return getAndroidDriver().isKeyboardShown();
+        return getIOSDriver().isKeyboardShown();
     }
 }
