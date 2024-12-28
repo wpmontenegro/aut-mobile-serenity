@@ -1,6 +1,5 @@
 package com.mobile.userinterface;
 
-import io.appium.java_client.AppiumBy;
 import net.serenitybdd.screenplay.targets.Target;
 import org.openqa.selenium.By;
 
@@ -12,7 +11,7 @@ public class HomeView {
 
     public static final Target VIEW_SCROLL = Target.the("View Scroll")
             .locatedForAndroid(By.className("android.widget.ScrollView"))
-            .locatedForIOS(AppiumBy.accessibilityId("products screen"));
+            .locatedForIOS(By.xpath("(//XCUIElementTypeScrollView)[2]"));
 
     public static final Target TXT_PRODUCT_NAME_ANDROID = Target.the("Text Product Name")
             .locatedBy("//android.widget.TextView[@content-desc=\"store item text\" and @text=\"{0}\"]");

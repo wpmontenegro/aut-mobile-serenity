@@ -25,4 +25,8 @@ public class TestData {
     public void putData(String key, String value) {
         dataMap.put(key, value);
     }
+
+    public Map<String, String> getDataMap() {
+        return dataMap;
+    }
 }
