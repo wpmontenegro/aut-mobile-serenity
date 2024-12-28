@@ -36,4 +36,11 @@ public class AppsUtils {
     public static boolean isIOS() {
         return PLATFORM.equalsIgnoreCase("iOS");
     }
+
+    public static void changeApp(String packageName) {
+        if (isAndroid())
+            getAndroidDriver().activateApp(packageName);
+        if (isIOS())
+            getIOSDriver().activateApp(packageName);
+    }
 }

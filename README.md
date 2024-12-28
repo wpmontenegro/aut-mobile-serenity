@@ -59,3 +59,7 @@ local (to execute tests on a locally connected device or emulator)
 bstack (to execute tests using BrowserStack)
 sauce (to execute tests using SauceLabs)
 ```
+
+## Useful links
+
+To implement deeplink in out automation refers to: [**Appium-Deeplinks**](https://github.com/LucySuslova/appium-deeplinks)
