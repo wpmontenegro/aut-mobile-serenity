@@ -4,6 +4,8 @@ import com.mobile.exceptions.AutomationException;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
+import net.serenitybdd.screenplay.Performable;
+import net.serenitybdd.screenplay.Task;
 import net.thucydides.core.webdriver.WebDriverFacade;
 
 import java.util.HashMap;
@@ -26,10 +28,8 @@ public class AppsUtils {
     }
 
     public static void navigateBack() {
-        if (isAndroid())
-            getAndroidDriver().navigate().back();
-        if (isIOS())
-            getIOSDriver().navigate().back();
+        if (isAndroid()) getAndroidDriver().navigate().back();
+        if (isIOS()) getIOSDriver().navigate().back();
     }
 
     public static boolean isAndroid() {
@@ -41,20 +41,21 @@ public class AppsUtils {
     }
 
     public static void changeApp(String packageName) {
-        if (isAndroid())
-            getAndroidDriver().activateApp(packageName);
-        if (isIOS())
-            getIOSDriver().activateApp(packageName);
+        if (isAndroid()) getAndroidDriver().activateApp(packageName);
+        if (isIOS()) getIOSDriver().activateApp(packageName);
     }
 
-    public static void openDeepLink(String path) {
-        if (isAndroid()) {
-            HashMap<String, String> map = new HashMap<>();
-            map.put("url", APP_NAME + "://" + path);
-            map.put("package", PACKAGE_NAME);
-            getAndroidDriver().executeScript("mobile: deepLink", map);
-        }
-        if (isIOS())
-            throw new AutomationException("Method not implemented");
+    public static Performable openDeepLink(String path) {
+        return Task.where(actor -> {
+            if (isAndroid()) {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("url", APP_NAME + "://" + path);
+                map.put("package", PACKAGE_NAME);
+                getAndroidDriver().executeScript("mobile: deepLink", map);
+            }
+            if (isIOS()) {
+                throw new AutomationException("Method not implemented");
+            }
+        });
     }
 }

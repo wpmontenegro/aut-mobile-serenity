@@ -4,6 +4,7 @@ import com.mobile.models.TestData;
 import com.mobile.questions.VerifyProduct;
 import com.mobile.tasks.AddProduct;
 import com.mobile.tasks.ChooseProduct;
+import com.mobile.tasks.OpenDeeplink;
 import com.mobile.tasks.RemoveProduct;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -31,5 +32,10 @@ public class CartStepDefinition {
         theActorInTheSpotlight().should(seeThat(VerifyProduct.withName(),
                 is(equalTo(TestData.getInstance().getData("productName")))));
         theActorInTheSpotlight().attemptsTo(RemoveProduct.fromCart());
+    }
+
+    @When("add a product to cart by deeplink")
+    public void addAProductToCartByDeeplink() {
+        theActorInTheSpotlight().attemptsTo(OpenDeeplink.toAddItems());
     }
 }
