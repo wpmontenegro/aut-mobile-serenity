@@ -1,11 +1,14 @@
 package com.mobile.utils;
 
+import com.mobile.exceptions.AutomationException;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import net.thucydides.core.webdriver.WebDriverFacade;
 
-import static com.mobile.utils.Constants.PLATFORM;
+import java.util.HashMap;
+
+import static com.mobile.utils.Constants.*;
 import static net.serenitybdd.core.Serenity.getDriver;
 
 public class AppsUtils {
@@ -42,5 +45,16 @@ public class AppsUtils {
             getAndroidDriver().activateApp(packageName);
         if (isIOS())
             getIOSDriver().activateApp(packageName);
+    }
+
+    public static void openDeepLink(String path) {
+        if (isAndroid()) {
+            HashMap<String, String> map = new HashMap<>();
+            map.put("url", APP_NAME + "://" + path);
+            map.put("package", PACKAGE_NAME);
+            getAndroidDriver().executeScript("mobile: deepLink", map);
+        }
+        if (isIOS())
+            throw new AutomationException("Method not implemented");
     }
 }
