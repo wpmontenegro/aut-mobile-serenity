@@ -66,8 +66,8 @@ mvn clean test -Dplatform={PLATFORM} -Dtype={TYPE}
 1. Sube la aplicación a **BrowserStack/SauceLabs** y elige el tipo de driver `bstack` or `sauce`
 2. Establezca las **Credenciales de BrowserStack/SauceLabs** como variables de entorno:
 ```
-export {BROWSERSTACK_USER/SAUCE_USER}=tu_usuario
-export {BROWSERSTACK_KEY/SAUCE_KEY}=tu_clave
+export BROWSERSTACK_USER/SAUCE_USER=tu_usuario
+export BROWSERSTACK_KEY/SAUCE_KEY=tu_clave
 ```
 3. Suba el aplicativo a BrowserStack/SauceLabs y establezcalo en el archivo de configuración correspondiente
 ```
